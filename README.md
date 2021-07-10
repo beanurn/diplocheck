@@ -27,7 +27,7 @@ scale_size_manual(values=c(0.5,2.5)) + scale_colour_manual(values = c("#666666",
 theme_bw(base_size = 18) + guides (size=FALSE,colour=guide_legend(title = 'state')) + facet_wrap (~ sample, ncol = 2)
 ```
 
-This produces the following plot (analogous to Figure 8 in the publication). It shows the read coverage across reference positions of locus 5568 for the F0 and F1 individuals. R = reference state, variants states are coloured.
+This produces the following plot (analogous to Figure 8 in the publication). It shows the read coverage across reference positions of locus 5568 for the F0 and F1 individuals. R = reference state (grey symbol), variant states are coloured.
 
 ![Image](gp_f1_locus5568_raw_read_coverage.png)
 
