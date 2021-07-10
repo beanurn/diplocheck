@@ -1,0 +1,5 @@
+BvGP	v	m	gp
+BbGP	b	f	gp
+F1F6	h	f	f1
+F1M	h	m	f1
+F1F7	h	f	f1
