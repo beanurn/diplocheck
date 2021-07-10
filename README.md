@@ -49,5 +49,30 @@ The `A` variant is at position 241 and is selected by typing `Bb` in the `type` 
 
 3. **Rescoring samples**
 
-For the PoPoolation2 mpileup2sync analysis, the dataset was subdivided into sets of up to 10 samples. The samples of a given set are rescored with `diplotyping_nonstandard_loci.pl`, with a set name supplied on the command line. The script then analyses `<setname>.sync` using the annotated variants stored in `gp_variants.txt`. For F2 individuals, a key file (`<setname>.key`) is also needed that identifies the samples in the `<setname>.sync` file. 
+For the PoPoolation2 mpileup2sync analysis, the dataset was subdivided into sets of up to 10 samples. The samples of a given set are rescored with `diplotyping_nonstandard_loci.pl`, with a set name supplied on the command line. The script then analyses `<setname>.sync` using the annotated variants stored in `gp_variants.txt`. For F2 individuals, a key file (`<setname>.key`) is also needed that identifies the samples in `<setname>.sync`. 
 
+Because highly covered, unambiguous variants are manually selected, diplotyping is straightforward. If the two most highly covered sequence states are supported by more than `$MINCOVER` (= 5) reads, a heterozygous diplotype is inferred. If only one sequence state exceeds `$MINCOVER` reads, the sample is deemed homozygous. 
+
+Here, the process is illustrated with set `gp_f1_locus5568`. The reference state at position 241 is `C`. Therefore AA = BbHOM, AC = HET and CC = BvHOM. The rescored diplotypes are written to`gp_f1_locus5568_rescored.tx`. The last column lists for a given individual the number of annotated positions that could not be scored, because the maximum coverage across all sequence states was smaller than or equal to `$MINCOVER`.
+
+locus | sample | diplotype | missing
+----- | ------ | --------- | -------
+5568 | BvGP | v/v | 0
+5568 | BbGP | b/b | 0
+5568 | F1F6 | b/v | 0
+5568 | F1M | b/v | 0
+5568 | F1F7 | b/v | 0
+
+Multiple variants at a given locus may allow additional haplotypes to be identified (up to four in the *B. bombina* x *B. variegata* cross). In fact, locus 5568 is a case in point. These variant positions can also be annotated (*e.g.* with b1 or b2 for different *B. bombina* haplotypes) in `gp_variants.txt`. `diplotyping_nonstandard_loci.pl` keeps track of these and reports diplotypes such as b2/v1 in that case.
+
+4. **Converting diplotypes to Lep-MAP3 format**
+
+`recode_diplotypes_for_lepmap.pl` reads in the output of `diplotyping_nonstandard_loci.pl` and coverts each diplotype into Lep-MAP3 format. These diplotype codes are then written to the input file for Lep-MAP3.
+
+locus | sample | diplotype | missing | Lep-MAP3 coding
+----- | ------ | --------- | ------- | ---------------
+5568 | BvGP | v/v | 0 | 0 0 0 0 1 0 0 0 0 0
+5568 | BbGP | b/b | 0 |  1 0 0 0 0 0 0 0 0 0
+5568 | F1F6 | b/v | 0 | 0 1 0 0 0 0 0 0 0 0
+5568 | F1M | b/v | 0 | 0 1 0 0 0 0 0 0 0 0 
+5568 | F1F7 | b/v | 0 | 0 1 0 0 0 0 0 0 0 0 
