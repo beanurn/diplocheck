@@ -29,6 +29,8 @@ theme_bw(base_size = 18) + guides (size=FALSE,colour=guide_legend(title = 'state
 
 This produces the following plot (analogous to Figure 8 in the publication). 
 
+
+
 2. **Selecting variants**
 
 The plot shows a homozygous variant (`A`) in the *B. bombina* GP with coverage just over 300. As expected, it is found in heterozygous state in each of the F1s. It can thus be used to identify BbHOM, HET and BvHOM diplotypes in all samples. 
@@ -53,7 +55,7 @@ For the PoPoolation2 mpileup2sync analysis, the dataset was subdivided into sets
 
 Because highly covered, unambiguous variants are manually selected, diplotyping is straightforward. If the two most highly covered sequence states are supported by more than `$MINCOVER` (= 5) reads, a heterozygous diplotype is inferred. If only one sequence state exceeds `$MINCOVER` reads, the sample is deemed homozygous. 
 
-Here, the process is illustrated with set `gp_f1_locus5568`. The reference state at position 241 is `C`. Therefore AA = BbHOM, AC = HET and CC = BvHOM. The rescored diplotypes are written to`gp_f1_locus5568_rescored.tx`. The last column lists for a given individual the number of annotated positions that could not be scored, because the maximum coverage across all sequence states was smaller than or equal to `$MINCOVER`.
+Here, the process is illustrated with set `gp_f1_locus5568`. The reference state at position 241 is `C`. Therefore AA = BbHOM, AC = HET and CC = BvHOM. The rescored diplotypes are written to`gp_f1_locus5568_rescored.txt`. The last column lists for a given individual the number of annotated positions that could not be scored, because the maximum coverage across all sequence states was smaller than or equal to `$MINCOVER`.
 
 locus | sample | diplotype | missing
 ----- | ------ | --------- | -------
