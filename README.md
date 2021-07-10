@@ -3,7 +3,7 @@ This repository provides analysis details for the following publication:
 
 Nürnberger, Baird, Čížková, Bryjová, Mudd, Blaxter and Szymura. 2021. A dense linkage map for a large repetitive genome: Discovery of the sex-determining region in hybridising fire-bellied toads (*Bombina bombina* and *B. variegata*)
 
-The linkage map was constructed in a F2 population of a *B. bombina* x *B. variegata* intercross. Diplotype expectations for the two F0 (grandparental, GP) individuals are *B. bombina* homozygote (BbHOM) and *B. variegata* homozygote (BvHOM), respectively, and F1 individuals are expected to be HET. All loci for which the inferred diplotypes for these individuals deviated for this expectation, were rescored based on manually selected variants as a check on the inference scheme. This repository provides the Perl scripts and data to rescore one example locus (locus 5568).
+The linkage map was constructed in a F2 population of a *B. bombina* x *B. variegata* intercross. Diplotype expectations for the two F0 (grandparental, GP) individuals are *B. bombina* homozygote (BbHOM) and *B. variegata* homozygote (BvHOM), respectively, and F1 individuals are expected to be heterozygous (HET). All loci for which the inferred diplotypes for these individuals deviated for this expectation, were rescored based on manually selected variants as a check on the inference scheme. This repository provides the Perl scripts and data to rescore one example locus (locus 5568).
 
 1. **Visualising the raw read data**
 
@@ -30,7 +30,6 @@ theme_bw(base_size = 18) + guides (size=FALSE,colour=guide_legend(title = 'state
 This produces the following plot (analogous to Figure 8 in the publication). It shows the read coverage across reference positions of locus 5568 for the F0 and F1 individuals. R = reference state, variants states are coloured.
 
 ![Image](gp_f1_locus5568_raw_read_coverage.png)
-
 
 2. **Selecting variants**
 
@@ -70,7 +69,7 @@ Multiple variants at a given locus may allow additional haplotypes to be identif
 
 4. **Converting diplotypes to Lep-MAP3 format**
 
-`recode_diplotypes_for_lepmap.pl` reads in the output of `diplotyping_nonstandard_loci.pl` and coverts each diplotype into Lep-MAP3 format. These diplotype codes are then written to the input file for Lep-MAP3.
+`recode_diplotypes_for_lepmap.pl` reads in the output of `diplotyping_nonstandard_loci.pl` and coverts each diplotype into Lep-MAP3 format (Rastas 2017). These diplotype codes are then written to the input file for Lep-MAP3.
 
 locus | sample | diplotype | missing | Lep-MAP3 coding
 ----- | ------ | --------- | ------- | ---------------
@@ -79,3 +78,9 @@ locus | sample | diplotype | missing | Lep-MAP3 coding
 5568 | F1F6 | b/v | 0 | 0 1 0 0 0 0 0 0 0 0
 5568 | F1M | b/v | 0 | 0 1 0 0 0 0 0 0 0 0 
 5568 | F1F7 | b/v | 0 | 0 1 0 0 0 0 0 0 0 0 
+
+5. **References**
+
+Kofler R., P. Orozco-terWengel, N. D. Maio, R. V. Pandey, V. Nolte, et al., 2011 PoPoolation: A toolbox for population genetic analysis of next generation sequencing data from pooled individuals. PLOS ONE 6: e15925. https://doi.org/10.1371/journal.pone.0015925
+
+Rastas P., 2017 Lep-MAP3: robust linkage mapping even for low-coverage whole genome sequencing data. Bioinformatics 33: 3726–3732. https://doi.org/10.1093/bioinformatics/btx494
