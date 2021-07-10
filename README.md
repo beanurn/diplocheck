@@ -35,7 +35,7 @@ The plot shows a homozygous variant (`A`) in the *B. bombina* GP with coverage j
 
 Script `raw_read_cover_from_sync_GP_comparison.pl` parses the same `*.sync` file and produces a tab-delimited file of variant states in which this selection can be recorded. Input files: as above. Output file: `gp_variants.txt`. A subset of that file is shown here:
 
-locus | position | sample | topdaown_order | state | coverage | type
+locus | position | sample | topdown_order | state | coverage | type
 ----- | -------- | ------ | -------------- | ----- | -------- | ----
 5568 | 187 | BvGP | 2 | G | 21 | 
 5568 | 217 | BvGP | 2 | C | 27 | 
