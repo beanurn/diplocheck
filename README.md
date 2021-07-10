@@ -29,7 +29,7 @@ theme_bw(base_size = 18) + guides (size=FALSE,colour=guide_legend(title = 'state
 
 This produces the following plot (analogous to Figure 8 in the publication). 
 
-[[https://github.com/beanurn/diplocheck/gp_f1_locus5568_raw_read_coverage.png|alt=beanurn]]
+[[https://github.com/beanurn/diplocheck/blob/main/img/gp_f1_locus5568_raw_read_coverage.png|alt=beanurn]]
 
 2. **Selecting variants**
 
